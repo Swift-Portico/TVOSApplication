@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol VideosTableViewCellDelegate: class{
+    func didSelectItem()
+}
+
 extension UICollectionViewCell {
     static var emptyCell = UICollectionViewCell()
 }
@@ -16,6 +20,8 @@ class VideosTableViewCell: UITableViewCell {
     @IBOutlet weak var videosCollectionViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var videosCollectionView: UICollectionView!
+    
+    weak var delegate: VideosTableViewCellDelegate?
     
     var cellType: CellType = .latestVideos
     
@@ -73,14 +79,14 @@ extension VideosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
             return UICollectionViewCell()
         case .classified:
             if let classifiedCell: ClassifiedCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ClassifiedCollectionViewCell", for: indexPath) as? ClassifiedCollectionViewCell {
-            classifiedCell.configure(withTitle: self.classifiedVideos[indexPath.row])
-            return classifiedCell
+                classifiedCell.configure(withTitle: self.classifiedVideos[indexPath.row])
+                return classifiedCell
             }
             return UICollectionViewCell()
         case .tools:
             if let toolsCell: ToolsCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ToolsCollectionViewCell", for: indexPath) as? ToolsCollectionViewCell {
-            toolsCell.posterImageView.image = UIImage(named: self.toolsVideos[indexPath.row])
-            return toolsCell
+                toolsCell.posterImageView.image = UIImage(named: self.toolsVideos[indexPath.row])
+                return toolsCell
             }
             return UICollectionViewCell()
         }
@@ -95,6 +101,10 @@ extension VideosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         case .classified:
             return .init(width: 360, height: 360)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didSelectItem()
     }
     
 }

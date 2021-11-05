@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class VideosCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var posterImageView: UIImageView!

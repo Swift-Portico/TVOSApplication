@@ -52,6 +52,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
             case .latestVideos:
                 cell.titleLabel.text = "Latest by iCode"
                 cell.videosCollectionViewHeightConstraint.constant = 360
+                cell.delegate = self
             case .classified:
                 cell.titleLabel.text = "Classified"
                 cell.videosCollectionViewHeightConstraint.constant = 360
@@ -70,4 +71,13 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return false
     }
     
+}
+
+extension HomeViewController: VideosTableViewCellDelegate {
+    
+    func didSelectItem() {
+        if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+            self.present(detailVC, animated: true, completion: nil)
+        }
+    }
 }
