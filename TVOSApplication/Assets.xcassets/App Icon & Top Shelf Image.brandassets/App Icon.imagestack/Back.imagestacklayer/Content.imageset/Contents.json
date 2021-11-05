@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "layer3.png",
       "idiom" : "tv",
       "scale" : "1x"
     },

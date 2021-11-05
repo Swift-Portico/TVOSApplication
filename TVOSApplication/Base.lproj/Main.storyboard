@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="13122.16" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="appleTV" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TVOSApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,12 +19,84 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="Mbd-Kj-b0a">
+                                <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Swz-0b-dP5"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZSu-58-e5I"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mbd-Kj-b0a" secondAttribute="trailing" id="5p2-v3-3UK"/>
+                            <constraint firstAttribute="bottom" secondItem="Mbd-Kj-b0a" secondAttribute="bottom" id="Hg8-7g-NQh"/>
+                            <constraint firstItem="Mbd-Kj-b0a" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bQt-ps-sQd"/>
+                            <constraint firstItem="Mbd-Kj-b0a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lmn-uj-kUS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="homeTableView" destination="Mbd-Kj-b0a" id="xgt-9T-n2h"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-138" y="-34"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="vw6-fx-Ivc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2D-G0-d5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0dk-FC-uOR" customClass="SearchViewController" customModule="TVOSApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Jn-9L-3E4"/>
+                        <viewControllerLayoutGuide type="bottom" id="Btc-1R-B3a"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GFq-yo-q1o">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DMT-Xs-0IW"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1957" y="-34"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="c0r-9C-yyb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tvj-aE-KQU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rQB-RT-CLY" customClass="DetailViewController" customModule="TVOSApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rJK-YM-r5V"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ja-Ij-Rkp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SCa-ig-at1">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hPq-Px-mft"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1972" y="1371"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Jel-O7-N4m">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SYC-ZW-2mS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dob-8i-WLm" customClass="ProfileViewController" customModule="TVOSApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ju8-MG-bi8"/>
+                        <viewControllerLayoutGuide type="bottom" id="dPe-DT-PUL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3mR-2r-pE8">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="zai-GY-3Uh"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3995" y="-34"/>
         </scene>
     </scenes>
 </document>
